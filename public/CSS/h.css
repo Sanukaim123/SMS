@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    min-height: 50px;
+    width: 100%;
+    background-image: linear-gradient(rgba(4,9,30,0.7));
+    background-size: cover;
+    position: relative;
+    background-color: rgb(50, 62, 100);
+ } 
+
+.image1{
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4,9,30,0.7));
+    background-size: cover;
+    position: relative;
+
+}
+
+nav{
+    display: flex;
+    padding: 2% 6%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav img{
+    width:150px;
+    }
+
+.nav-links-1{
+    flex:1;
+    color: azure;
+    
+}
+
+
+
+.nav-links-1 ul a{
+    list-style: non;
+    display: inline-block;
+    padding: 8px;
+    margin-left: 20px;
+    position: relative;
+    color: azure;
+   
+}
+
+.nav-links-2 ul a {
+    list-style: non;
+    display: inline-block;
+    padding: 8px;
+    position: relative;
+    margin-left: 30px;
+    color: azure;
+}
+.container{
+    height:10px;
+    width: 100%;
+}
