@@ -11,6 +11,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/admin/table', function () {
+    return view('admin.table');
+});
+
+
+Route::get('/admin/form', function () {
+    return view('admin.form');
+});
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::post('/dashboard', [DashboardController::class, 'login'])->name('dashboard');
 
@@ -27,5 +36,14 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
-Route::get('/teacher/dashboard', [TeacherController::class, 'TeacherDashboard'])->name('teacher.dashboard');
+
+
+Route::middleware(['auth','role:admin'])->group(function(){
+    Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
+});
+
+
+
+Route::middleware(['auth','role:teacher'])->group(function(){
+    Route::get('/teacher/dashboard', [TeacherController::class, 'TeacherDashboard'])->name('teacher.dashboard');
+});
