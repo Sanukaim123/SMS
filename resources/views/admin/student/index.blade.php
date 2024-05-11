@@ -383,154 +383,97 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
 
                     <!-- Content Row -->
-                    <div class="row">
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Earnings (Monthly)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Earnings (Annual)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
           
-                    <div class="forma" >
-                        <h1>Add Teacher</h1>
+                    
 
-                    <form>
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <h1>Student List</h1>
                             </div>
-                            <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
+                            <div class="col-sm-6" style="text-align:right;">
+                                <a href="{{route('admin.student.create')}}" div class="btn btn-primary">Add new student</a>
                             </div>
-                            <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+
+                            @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-</div>
-<br><br>
-<hr style="color:black">
-<h1>Table</h1>
+                            @endif
+                            @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                             @endif
+
 
 <div class="tabl">
 
 <table class="table table-striped table-hover">
-<thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Student ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Grade</th>
+            <th scope="col">Sex</th>
+            <th scope="col">Address</th>
+            <th scope="col">Email</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @forelse($students as $index => $row)
+        <tr>
+            <td>{{ $index + 1 }}</td>
+            <td>{{ $row->student_id }}</td>
+            <td>{{ $row->name }}</td>
+            <td>{{ $row->grade }}</td>
+            <td>{{ $row->sex }}</td>
+            <td>{{ $row->address }}</td>
+            <td>{{ $row->email }}</td>
+            <td>
+                 <a href="{{ route('admin.student.edit', ['id' => $row->id]) }}" class="btn btn-primary">Edit</a>
+                 <button class="btn btn-danger" onClick="deleteFunction('{{ $row->id }}')">Delete</button> 
+
+                
+
+            </td>
+        </tr>
+        @empty
+        <tr>
+            <td colspan="8">No users found</td>
+        </tr>
+        @endforelse
+    </tbody>
 </table>
+
+@include('admin.student.modal_delete')
+
+@push('js')
+    <script>
+        function deleteFunction(id) {
+            document.getElementById('delete_id').value = id;
+            $("#modalDelete").modal('show');
+        }
+    </script>
+@endpush
+
 </div>
+
+
+ 
+    
+
+
+
 
                     <!-- Content Row -->
 
@@ -810,6 +753,10 @@
         </div>
     </div>
 
+   
+
+   
+
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('assets/vendor1/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('assets/vendor1/bootstrap/js1/bootstrap.bundle.min.js')}}"></script>
@@ -826,6 +773,8 @@
     <!-- Page level custom scripts -->
     <script src="{{asset('assets/js1/demo/chart-area-demo.js')}}"></script>
     <script src="{{asset('assets/js1/demo/chart-pie-demo.js')}}"></script>
+
+   
 
 </body>
 
