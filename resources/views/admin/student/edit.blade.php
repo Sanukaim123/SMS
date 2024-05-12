@@ -394,31 +394,31 @@
                     <div class="forma"  >
                         <h1>Edit Student Details</h1>
 
-                        <form method="post" action="@if (isset($edit->id)) {{ route('admin.student.update', ['id' => $edit->id]) }}@else{{ route('admin.student.store') }} @endif" enctype="multipart/form-data">
+                        <form method="post" action="@if (isset($edit->student_id)) {{ route('admin.student.update', ['student_id' => $edit->student_id]) }}@else{{ route('admin.student.store') }} @endif" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="student_id" class="form-label">Student ID</label>
-            <input type="text" class="form-control" id="student_id" name="student_id" value="@if (isset($edit->id)) {{ $edit->student_id }}@else {{ old('student_id') }} @endif" aria-describedby="emailHelp">
+            <input type="text" class="form-control" id="student_id" name="student_id" value="@if (isset($edit->student_id)) {{ $edit->student_id }}@else {{ old('student_id') }} @endif" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" name="name" value="@if (isset($edit->id)) {{ $edit->name }}@else {{ old('name') }} @endif">
+            <input type="text" class="form-control" id="name" name="name" value="@if (isset($edit->student_id)) {{ $edit->name }}@else {{ old('name') }} @endif">
         </div>
         <div class="mb-3">
             <label for="grade" class="form-label">Grade</label>
-            <input type="text" class="form-control" id="grade" name="grade" value="@if (isset($edit->id)) {{ $edit->grade }}@else {{ old('grade') }} @endif">
+            <input type="text" class="form-control" id="grade" name="grade" value="@if (isset($edit->student_id)) {{ $edit->grade }}@else {{ old('grade') }} @endif">
         </div>
         <div class="mb-3">
             <label for="sex" class="form-label">Sex</label>
-            <input type="text" class="form-control" id="sex" name="sex" value="@if (isset($edit->id)) {{ $edit->sex }}@else {{ old('sex') }} @endif">
+            <input type="text" class="form-control" id="sex" name="sex" value="@if (isset($edit->student_id)) {{ $edit->sex }}@else {{ old('sex') }} @endif">
         </div>
         <div class="mb-3">
             <label for="address" class="form-label">Address</label>
-            <input type="text" class="form-control" id="address" name="address" value="@if (isset($edit->id)) {{ $edit->address }}@else {{ old('address') }} @endif">
+            <input type="text" class="form-control" id="address" name="address" value="@if (isset($edit->student_id)) {{ $edit->address }}@else {{ old('address') }} @endif">
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" value="@if (isset($edit->id)) {{ $edit->email }}@else {{ old('email') }} @endif">
+            <input type="email" class="form-control" id="email" name="email" value="@if (isset($edit->student_id)) {{ $edit->email }}@else {{ old('email') }} @endif">
         </div>
         
         <button type="submit" class="btn btn-primary">Edit</button>

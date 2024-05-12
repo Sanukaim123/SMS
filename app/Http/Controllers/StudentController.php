@@ -71,14 +71,14 @@ class StudentController extends Controller
     public function edit($student_id)
     {
         $title = "Update User";
-        $edit = Student::findOrFail($id);
+        $edit = Student::findOrFail($student_id);
         return view('admin.student.edit', compact('edit', 'title'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $student_id)
     {
         $request->validate(
             [
