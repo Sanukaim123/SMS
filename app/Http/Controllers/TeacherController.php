@@ -3,11 +3,91 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Teacher;
+use Illuminate\Support\Facades\Session;
 
 class TeacherController extends Controller
 {
-    public function TeacherDashboard(){
-        return view('teacher.teacher_dashboard');
-    
-       }
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+
+    {
+          $teachers = Teacher::latest('id')->get();
+        return view('admin.teacher.index',compact('teachers'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        $title='Add New Teacher';
+        return view('admin.teacher.create',compact('title'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $request->validate(
+            [
+               'employee_id'=>'required',
+               'name'=>'required',
+               'qualification'=>'required',
+               'year_experience'=>'required',
+               'status'=>'required',
+               'email'=>'required',
+
+            ]
+        );
+
+       
+        $insert = new Teacher();
+        $insert->employee_id = $request->employee_id;
+        $insert->name = $request->name;
+        $insert->qualification = $request->qualification;
+        $insert->year_experience = $request->year_experience;
+        $insert->status= $request->status;
+        $insert->email = $request->email;
+
+        $result = $insert->save();
+        Session::flash('success','Teacher aded successfully');
+        return redirect()->route('admin.teacher.index');
+
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
 }

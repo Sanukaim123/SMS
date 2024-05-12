@@ -44,7 +44,12 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/teacher_list', [AdminController::class, 'teacherList'])->name('admin.teacher_List');
     Route::get('/admin/add_teacher', [AdminController::class, 'addTeacher'])->name('admin.add_teacher');
     
-    
+    Route::get('/admin/student/index', [StudentController::class, 'index'])->name('admin.student.index');
+    Route::get('admin/student/create', [StudentController::class, 'create'])->name('admin.student.create');
+    Route::post('admin/student/add', [StudentController::class, 'store'])->name('admin.student.store');
+    Route::get('admin/student/edit/{id}', [StudentController::class, 'edit'])->name('admin.student.edit');
+    Route::post('/update/{id}', [StudentController::class, 'update'])->name('admin.student.update');
+Route::post('admin/student/delete', [StudentController::class, 'destroy'])->name('admin.student.delete');
     // Route::post('admin/student/create', [AdminController::class, 'studentStore'])->name('admin.student.store');
 });
 
@@ -54,10 +59,9 @@ Route::middleware(['auth','role:teacher'])->group(function(){
     Route::get('/teacher/dashboard', [TeacherController::class, 'TeacherDashboard'])->name('teacher.dashboard');
 });
 
-Route::get('/admin/student/index', [StudentController::class, 'index'])->name('admin.student.index');
-Route::get('admin/student/create', [StudentController::class, 'create'])->name('admin.student.create');
-Route::post('admin/student/add', [StudentController::class, 'store'])->name('admin.student.store');
-Route::get('admin/student/edit/{id}', [StudentController::class, 'edit'])->name('admin.student.edit');
-Route::post('/update/{id}', [StudentController::class, 'update'])->name('admin.student.update');
-Route::post('admin/student/delete', [StudentController::class, 'destroy'])->name('admin.student.delete');
 
+
+
+Route::get('/admin/teacher/index', [TeacherController::class, 'index'])->name('admin.teacher.index');
+Route::get('admin/teacher/create', [TeacherController::class, 'create'])->name('admin.teacher.create');
+Route::post('admin/teacher/add', [TeacherController::class, 'store'])->name('admin.teacher.store');

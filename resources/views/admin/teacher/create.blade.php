@@ -382,88 +382,51 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        
+                    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
+                    </div> -->
 
                     <!-- Content Row -->
-                   
-          
                     
+          
+            <div class="forma" >
+                        <h1>Add Teacher</h1>
 
-                    <div class="row mb-2">
-                            <div class="col-sm-6">
-                                <h1>Student List</h1>
-                            </div>
-                            <div class="col-sm-6" style="text-align:right;">
-                                <a href="{{route('admin.student.create')}}" div class="btn btn-primary">Add new student</a>
-                            </div>
+                <form method="post" action="{{route('admin.teacher.store')}}">
+                         @csrf
+                        <div class="mb-3">
+                            <label for="employee_id" class="form-label">Employee ID</label>
+                            <input type="text" class="form-control" id="employee_id" name="employee_id" aria-describedby="emailHelp">
                         </div>
-
-                            @if (session('success'))
-                            <div class="alert alert-success">
-                                {{ session('success') }}
-                            </div>
-                            @endif
-                            @if (session('error'))
-                            <div class="alert alert-danger">
-                                {{ session('error') }}
-                            </div>
-                             @endif
-
-
-<div class="tabl">
-
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Student ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Grade</th>
-            <th scope="col">Sex</th>
-            <th scope="col">Address</th>
-            <th scope="col">Email</th>
-            <th scope="col">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @forelse($students as $index => $row)
-        <tr>
-            <td>{{ $index + 1 }}</td>
-            <td>{{ $row->student_id }}</td>
-            <td>{{ $row->name }}</td>
-            <td>{{ $row->grade }}</td>
-            <td>{{ $row->sex }}</td>
-            <td>{{ $row->address }}</td>
-            <td>{{ $row->email }}</td>
-            <td>
-                 <a href="{{ route('admin.student.edit', ['id' => $row->id]) }}" class="btn btn-primary">Edit</a>
-                 <button class="btn btn-danger" onClick="deleteFunction('{{ $row->id }}')">Delete</button> 
-
-                
-
-            </td>
-        </tr>
-        @empty
-        <tr>
-            <td colspan="8">No users found</td>
-        </tr>
-        @endforelse
-    </tbody>
-</table>
-
-
-
-</div>
-
-
- 
-    
-
-
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="qualification" class="form-label">Qualification</label>
+                            <input type="text" class="form-control" id="qualification" name="qualification">
+                        </div>
+                        <div class="mb-3">
+                            <label for="year_experience" class="form-label">Years of Experience</label>
+                            <input type="text" class="form-control" id="year_expreience" name="year_experience">
+                        </div>
+                        <label class="my-1 mr-2" for="status">Status</label>
+                            <select class="custom-select my-1 mr-sm-2" id="status" name="status">
+                                
+                                <option value="1">Active</option>
+                                <option value="2">Inactive</option>
+                            
+                            </select>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
 
 
                     <!-- Content Row -->
@@ -744,20 +707,6 @@
         </div>
     </div>
 
-    @include('admin.student.modal_delete')
-
-@push('js')
-    <script>
-        function deleteFunction(id) {
-            document.getElementById('delete_id').value = id;
-            $("#modalDelete").modal('show');
-        }
-    </script>
-@endpush
-   
-
-   
-
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('assets/vendor1/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('assets/vendor1/bootstrap/js1/bootstrap.bundle.min.js')}}"></script>
@@ -774,8 +723,6 @@
     <!-- Page level custom scripts -->
     <script src="{{asset('assets/js1/demo/chart-area-demo.js')}}"></script>
     <script src="{{asset('assets/js1/demo/chart-pie-demo.js')}}"></script>
-
-   
 
 </body>
 

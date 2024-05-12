@@ -395,10 +395,10 @@
 
                     <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1>Student List</h1>
+                                <h1>Teacher List</h1>
                             </div>
                             <div class="col-sm-6" style="text-align:right;">
-                                <a href="{{route('admin.student.create')}}" div class="btn btn-primary">Add new student</a>
+                                <a href="{{route('admin.teacher.create')}}" div class="btn btn-primary">Add new teacher</a>
                             </div>
                         </div>
 
@@ -420,27 +420,27 @@
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Student ID</th>
+            <th scope="col">Employee ID</th>
             <th scope="col">Name</th>
-            <th scope="col">Grade</th>
-            <th scope="col">Sex</th>
-            <th scope="col">Address</th>
+            <th scope="col">Qualification</th>
+            <th scope="col">Years of Experience</th>
+            <th scope="col">Status</th>
             <th scope="col">Email</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
-        @forelse($students as $index => $row)
+        @forelse($teachers as $index => $row)
         <tr>
             <td>{{ $index + 1 }}</td>
-            <td>{{ $row->student_id }}</td>
+            <td>{{ $row->employee_id }}</td>
             <td>{{ $row->name }}</td>
-            <td>{{ $row->grade }}</td>
-            <td>{{ $row->sex }}</td>
-            <td>{{ $row->address }}</td>
+            <td>{{ $row->qualification }}</td>
+            <td>{{ $row->year_experience }}</td>
+            <td>{{ $row->status }}</td>
             <td>{{ $row->email }}</td>
             <td>
-                 <a href="{{ route('admin.student.edit', ['id' => $row->id]) }}" class="btn btn-primary">Edit</a>
+                  <!-- <a href="{{ route('admin.student.edit', ['id' => $row->id]) }}" class="btn btn-primary">Edit</a>  -->
                  <button class="btn btn-danger" onClick="deleteFunction('{{ $row->id }}')">Delete</button> 
 
                 
