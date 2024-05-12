@@ -13,7 +13,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::latest('id')->get();
+        $students = Student::latest('student_id')->get();
         return view('admin.student.index',compact('students'));
     }
 
@@ -68,7 +68,7 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit($student_id)
     {
         $title = "Update User";
         $edit = Student::findOrFail($id);
@@ -90,7 +90,7 @@ class StudentController extends Controller
                 'email' => 'required',
             ]
         );
-        $update = Student::findOrFail($id);
+        $update = Student::findOrFail($student_id);
         $update->student_id = $request->student_id;
         $update->name = $request->name;
         

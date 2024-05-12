@@ -419,7 +419,7 @@
 <table class="table table-striped table-hover">
     <thead>
         <tr>
-            <th scope="col">#</th>
+            <!-- <th scope="col">#</th> -->
             <th scope="col">Student ID</th>
             <th scope="col">Name</th>
             <th scope="col">Grade</th>
@@ -432,7 +432,7 @@
     <tbody>
         @forelse($students as $index => $row)
         <tr>
-            <td>{{ $index + 1 }}</td>
+            <!-- <td>{{ $index + 1 }}</td> -->
             <td>{{ $row->student_id }}</td>
             <td>{{ $row->name }}</td>
             <td>{{ $row->grade }}</td>
@@ -440,7 +440,7 @@
             <td>{{ $row->address }}</td>
             <td>{{ $row->email }}</td>
             <td>
-                 <a href="{{ route('admin.student.edit', ['employee_id' => $row->employee_id]) }}" class="btn btn-primary">Edit</a>
+                 <a href="{{ route('admin.student.edit', ['student_id' => $row->student_id]) }}" class="btn btn-primary">Edit</a>
                  <button class="btn btn-danger" onClick="deleteFunction('{{ $row->employee_id }}')">Delete</button> 
 
                 
