@@ -14,7 +14,7 @@ class TeacherController extends Controller
     public function index()
 
     {
-          $teachers = Teacher::latest('id')->get();
+          $teachers = Teacher::latest('employee_id')->get();
         return view('admin.teacher.index',compact('teachers'));
     }
 
@@ -70,17 +70,17 @@ class TeacherController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $employee_id)
     {
         $title = "Update Teacher's details";
-        $edit = Teacher::findOrFail($id);
+        $edit = Teacher::findOrFail($employee_id);
         return view('admin.teacher.edit', compact('edit', 'title'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $employee_id)
     { $request->validate(
         [
             'employee_id'=>'required',
@@ -92,7 +92,7 @@ class TeacherController extends Controller
 
         ]
     );
-    $update = Teacher::findOrFail($id);
+    $update = Teacher::findOrFail($employee_id);
     $update->employee_id = $request->employee_id;
     $update->name = $request->name;
     

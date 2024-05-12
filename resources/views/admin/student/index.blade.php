@@ -440,8 +440,8 @@
             <td>{{ $row->address }}</td>
             <td>{{ $row->email }}</td>
             <td>
-                 <a href="{{ route('admin.student.edit', ['id' => $row->id]) }}" class="btn btn-primary">Edit</a>
-                 <button class="btn btn-danger" onClick="deleteFunction('{{ $row->id }}')">Delete</button> 
+                 <a href="{{ route('admin.student.edit', ['employee_id' => $row->employee_id]) }}" class="btn btn-primary">Edit</a>
+                 <button class="btn btn-danger" onClick="deleteFunction('{{ $row->employee_id }}')">Delete</button> 
 
                 
 
