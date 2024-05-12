@@ -65,3 +65,5 @@ Route::middleware(['auth','role:teacher'])->group(function(){
 Route::get('/admin/teacher/index', [TeacherController::class, 'index'])->name('admin.teacher.index');
 Route::get('admin/teacher/create', [TeacherController::class, 'create'])->name('admin.teacher.create');
 Route::post('admin/teacher/add', [TeacherController::class, 'store'])->name('admin.teacher.store');
+Route::get('admin/teacher/edit/{id}', [TeacherController::class, 'edit'])->name('admin.teacher.edit');
+Route::post('/update/{id}', [TeacherController::class, 'update'])->name('admin.teacher.update');

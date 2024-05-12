@@ -72,15 +72,38 @@ class TeacherController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $title = "Update Teacher's details";
+        $edit = Teacher::findOrFail($id);
+        return view('admin.teacher.edit', compact('edit', 'title'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function update(Request $request, $id)
+    { $request->validate(
+        [
+            'employee_id'=>'required',
+            'name'=>'required',
+            'qualification'=>'required',
+            'year_experience'=>'required',
+            'status'=>'required',
+            'email'=>'required',
+
+        ]
+    );
+    $update = Teacher::findOrFail($id);
+    $update->employee_id = $request->employee_id;
+    $update->name = $request->name;
+    
+    $update->qualification = $request->qualification;
+    $update->year_experience = $request->year_experience;
+    $update->status = $request->status;
+    $update->email= $request->email;
+
+    $result = $update->save();
+    Session::flash('success', 'Teacher updated successfully');
+    return redirect()->route('admin.teacher.index');
     }
 
     /**
