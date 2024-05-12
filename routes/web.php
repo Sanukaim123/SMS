@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CourseController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -67,3 +68,5 @@ Route::get('admin/teacher/create', [TeacherController::class, 'create'])->name('
 Route::post('admin/teacher/add', [TeacherController::class, 'store'])->name('admin.teacher.store');
 Route::get('admin/teacher/edit/{employee_id}', [TeacherController::class, 'edit'])->name('admin.teacher.edit');
 Route::post('/update/{employee_id}', [TeacherController::class, 'update'])->name('admin.teacher.update');
+
+Route::get('/admin/course/index', [CourseController::class, 'index'])->name('admin.course.index');

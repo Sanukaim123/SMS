@@ -8,5 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    
+    protected $primaryKey = 'course_code'; // Define the primary key column
+    public $incrementing = false; // Disable auto-incrementing for the primary key
+
+    protected $fillable = [
+        'course_code', 'course_name','employee_id' // Specify the columns that are fillable
+    ];
 }
