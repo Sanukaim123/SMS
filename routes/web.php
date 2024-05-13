@@ -80,3 +80,4 @@ Route::post('/update/{course_code}', [CourseController::class, 'update'])->name(
 Route::get('admin/enrollment/index', [EnrollmentController::class, 'index'])->name('admin.enrollment.index');
 Route::get('admin/enrollment/create', [EnrollmentController::class, 'create'])->name('admin.enrollment.create');
 Route::post('admin/enrollment/add', [EnrollmentController::class, 'store'])->name('admin.enrollment.store');
+Route::get('admin/enrollment/edit/{enroll_id}', [EnrollmentController::class, 'edit'])->name('admin.enrollment.edit');

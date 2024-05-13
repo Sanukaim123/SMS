@@ -382,84 +382,37 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        
+                    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
+                    </div> -->
 
                     <!-- Content Row -->
-                   
-          
                     
+          
+                    <div class="forma"  >
+                        <h1>Edit Enrollment Details</h1>
 
-                    <div class="row mb-2">
-                            <div class="col-sm-6">
-                                <h1>Student Enrollment</h1>
-                            </div>
-                            <div class="col-sm-6" style="text-align:right;">
-                                <a href="{{route('admin.enrollment.create')}}" div class="btn btn-primary">Add Enrollment</a>
-                            </div>
-                        </div>
-
-                            @if (session('success'))
-                            <div class="alert alert-success">
-                                {{ session('success') }}
-                            </div>
-                            @endif
-                            @if (session('error'))
-                            <div class="alert alert-danger">
-                                {{ session('error') }}
-                            </div>
-                             @endif
-
-
-<div class="tabl">
-
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <!-- <th scope="col">#</th> -->
-            <th scope="col">Enroll ID</th>
-            <th scope="col">Student ID</th>
-            <th scope="col">Course Code</th>
-           
-            <th scope="col">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @forelse($enrollments as $index => $row)
-        <tr>
-            <!-- <td>{{ $index + 1 }}</td> -->
-            <td>{{ $row->enroll_id }}</td>
-            <td>{{ $row->student_id }}</td>
-            <td>{{ $row->course_code }}</td>
-            
-            <td>
-                 <a href="{{ route('admin.enrollment.edit', ['enroll_id' => $row->enroll_id]) }}" class="btn btn-primary">Edit</a>
-                 <button class="btn btn-danger" onClick="deleteFunction('{{ $row->enroll_id }}')">Delete</button> 
-
-                
-
-            </td>
-        </tr>
-        @empty
-        <tr>
-            <td colspan="8">No users found</td>
-        </tr>
-        @endforelse
-    </tbody>
-</table>
-
-
-
+                        <form method="post" action="" enctype="multipart/form-data">
+        @csrf
+        <div class="mb-3">
+            <label for="enroll_id" class="form-label">Enrollment ID</label>
+            <input type="text" class="form-control" id="enroll_id" name="enroll_id" value="@if (isset($edit->enroll_id)) {{ $edit->enroll_id }}@else {{ old('enroll_id') }} @endif" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="student_id" class="form-label">Student ID</label>
+            <input type="text" class="form-control" id="student_id" name="student_id" value="@if (isset($edit->enroll_id)) {{ $edit->student_id }}@else {{ old('student_id') }} @endif">
+        </div>
+        <div class="mb-3">
+            <label for="course_code" class="form-label">Course Code</label>
+            <input type="text" class="form-control" id="course_code" name="course_code" value="@if (isset($edit->enroll_id)) {{ $edit->course_code }}@else {{ old('course_code') }} @endif">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Edit</button>
+        <a class="btn btn-danger" href="{{ route('admin.enrollment.index') }}">Cancel</a>
+    </form>
 </div>
-
-
- 
-    
-
-
 
 
                     <!-- Content Row -->
@@ -740,20 +693,6 @@
         </div>
     </div>
 
-    @include('admin.student.modal_delete')
-
-@push('js')
-    <script>
-        function deleteFunction(id) {
-            document.getElementById('delete_id').value = id;
-            $("#modalDelete").modal('show');
-        }
-    </script>
-@endpush
-   
-
-   
-
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('assets/vendor1/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('assets/vendor1/bootstrap/js1/bootstrap.bundle.min.js')}}"></script>
@@ -770,8 +709,6 @@
     <!-- Page level custom scripts -->
     <script src="{{asset('assets/js1/demo/chart-area-demo.js')}}"></script>
     <script src="{{asset('assets/js1/demo/chart-pie-demo.js')}}"></script>
-
-   
 
 </body>
 

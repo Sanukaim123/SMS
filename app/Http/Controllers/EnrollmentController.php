@@ -63,9 +63,11 @@ class EnrollmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $enroll_id)
     {
-        //
+        $title = "Update User";
+        $edit = Enrollment::findOrFail($enroll_id);
+        return view('admin.enrollment.edit', compact('edit', 'title'));
     }
 
     /**
