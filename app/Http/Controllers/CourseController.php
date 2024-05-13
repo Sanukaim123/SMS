@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Course;
+use Illuminate\Support\Facades\Session;
 
 class CourseController extends Controller
 {
@@ -21,7 +22,8 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        $title='Add New Course';
+        return view('admin.course.create',compact('title'));
     }
 
     /**
@@ -29,7 +31,26 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+               'course_code'=>'required',
+               'course_name'=>'required',
+               'employee_id'=>'required',
+              
+
+            ]
+        );
+
+       
+        $insert = new Course();
+        $insert->course_code = $request->course_code;
+        $insert->course_name = $request->course_name;
+        $insert->employee_id = $request->employee_id;
+        
+
+        $result = $insert->save();
+        Session::flash('success', 'Student aded successfully');
+        return redirect()->route('admin.course.index');
     }
 
     /**

@@ -398,7 +398,7 @@
                                 <h1>Course List</h1>
                             </div>
                             <div class="col-sm-6" style="text-align:right;">
-                                <a href="{{route('admin.course.create')}}" div class="btn btn-primary">Add new student</a>
+                                <a href="{{route('admin.course.create')}}" div class="btn btn-primary">Add new course</a>
                             </div>
                         </div>
 
@@ -420,27 +420,23 @@
     <thead>
         <tr>
             <!-- <th scope="col">#</th> -->
-            <th scope="col">Student ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Grade</th>
-            <th scope="col">Sex</th>
-            <th scope="col">Address</th>
-            <th scope="col">Email</th>
+            <th scope="col">Course Code</th>
+            <th scope="col">Course Name</th>
+            <th scope="col">Teacher ID</th>
             <th scope="col">Action</th>
+            
         </tr>
     </thead>
     <tbody>
         @forelse($courses as $index => $row)
         <tr>
             <!-- <td>{{ $index + 1 }}</td> -->
-            <td>{{ $row->student_id }}</td>
-            <td>{{ $row->name }}</td>
-            <td>{{ $row->grade }}</td>
-            <td>{{ $row->sex }}</td>
-            <td>{{ $row->address }}</td>
-            <td>{{ $row->email }}</td>
+            <td>{{ $row->course_code }}</td>
+            <td>{{ $row->course_name}}</td>
+            <td>{{ $row->employee_id }}</td>
+            
             <td>
-                 <a href="{{ route('admin.student.edit', ['course_id' => $row->course_id]) }}" class="btn btn-primary">Edit</a>
+                 <!-- <a href="" class="btn btn-primary">Edit</a> -->
                  <button class="btn btn-danger" onClick="deleteFunction('{{ $row->employee_id }}')">Delete</button> 
 
                 

@@ -70,3 +70,5 @@ Route::get('admin/teacher/edit/{employee_id}', [TeacherController::class, 'edit'
 Route::post('/update/{employee_id}', [TeacherController::class, 'update'])->name('admin.teacher.update');
 
 Route::get('/admin/course/index', [CourseController::class, 'index'])->name('admin.course.index');
+Route::get('admin/course/create', [CourseController::class, 'create'])->name('admin.course.create');
+Route::post('admin/course/add', [CourseController::class, 'store'])->name('admin.course.store');

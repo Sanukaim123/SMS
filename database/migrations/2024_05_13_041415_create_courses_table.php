@@ -12,10 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('courses', function (Blueprint $table) {
-          
             $table->string('course_code')->primary();
             $table->string('course_name');
-            $table->unsignedInteger('employee_id');
+            $table->string('employee_id'); // Change this to string
             $table->foreign('employee_id')->references('employee_id')->on('teachers');
             $table->timestamps();
         });
