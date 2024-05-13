@@ -64,9 +64,11 @@ class CourseController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $course_code)
     {
-        //
+        $title = "Update Course Details";
+        $edit = Course::findOrFail($course_code);
+        return view('admin.course.edit', compact('edit', 'title'));
     }
 
     /**
