@@ -394,7 +394,7 @@
                     <div class="forma"  >
                         <h1>Edit Enrollment Details</h1>
 
-                        <form method="post" action="" enctype="multipart/form-data">
+                        <form method="post" action="@if (isset($edit->enroll_id)) {{ route('admin.enrollment.update', ['enroll_id' => $edit->enroll_id]) }}@else{{ route('admin.enrollment.store') }} @endif" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="enroll_id" class="form-label">Enrollment ID</label>

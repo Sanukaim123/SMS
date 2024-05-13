@@ -73,9 +73,24 @@ class EnrollmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $enroll_id)
     {
-        //
+        $request->validate(
+            [
+                'enroll_id'=>'required',
+               'student_id'=>'required',
+               'course_code'=>'required',
+            ]
+        );
+        $update = Enrollment::findOrFail($enroll_id);
+        $update->enroll_id = $request->enroll_id;
+        $update->student_id = $request->student_id; 
+        $update->course_code = $request->course_code;
+        
+
+        $result = $update->save();
+        Session::flash('success', 'Updated successfully');
+        return redirect()->route('admin.enrollment.index');
     }
 
     /**
