@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\EnrollmentController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -74,3 +75,6 @@ Route::get('admin/course/create', [CourseController::class, 'create'])->name('ad
 Route::post('admin/course/add', [CourseController::class, 'store'])->name('admin.course.store');
 Route::get('admin/course/edit/{course_code}', [CourseController::class, 'edit'])->name('admin.course.edit');
 Route::post('/update/{course_code}', [CourseController::class, 'update'])->name('admin.course.update');
+
+
+Route::get('admin/enrollment/index', [EnrollmentController::class, 'index'])->name('admin.enrollment.index');
