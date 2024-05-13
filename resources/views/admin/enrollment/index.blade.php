@@ -398,7 +398,7 @@
                                 <h1>Student Enrollment</h1>
                             </div>
                             <div class="col-sm-6" style="text-align:right;">
-                                <a href="{{route('admin.enrollment.create')}}" div class="btn btn-primary">Add new student</a>
+                                <a href="{{route('admin.enrollment.create')}}" div class="btn btn-primary">Add Enrollment</a>
                             </div>
                         </div>
 
@@ -432,7 +432,7 @@
         <tr>
             <!-- <td>{{ $index + 1 }}</td> -->
             <td>{{ $row->enroll_id }}</td>
-            <td>{{ $row->student_code }}</td>
+            <td>{{ $row->student_id }}</td>
             <td>{{ $row->course_code }}</td>
             
             <td>

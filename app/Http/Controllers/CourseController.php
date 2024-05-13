@@ -74,7 +74,7 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,$course_code)
+    public function update(Request $request, $course_code)
     {
         $request->validate(
             [
@@ -87,7 +87,6 @@ class CourseController extends Controller
         $update = Course::findOrFail($course_code);
         $update->course_code = $request->course_code;
         $update->course_name = $request->course_name;
-        
         $update->employee_id = $request->employee_id;
         
 

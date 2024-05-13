@@ -22,7 +22,8 @@ class EnrollmentController extends Controller
      */
     public function create()
     {
-        //
+        $title='Add New Enrollment';
+        return view('admin.enrollment.create',compact('title'));
     }
 
     /**
@@ -30,7 +31,25 @@ class EnrollmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+               'enroll_id'=>'required',
+               'student_id'=>'required',
+               'course_code'=>'required',
+               
+            ]
+        );
+
+        
+        $insert = new Enrollment();
+        $insert->enroll_id = $request->enroll_id;
+        $insert->student_id = $request->student_id;
+        $insert->course_code= $request->course_code;
+        
+
+        $result = $insert->save();
+        Session::flash('success', 'Added successfully');
+        return redirect()->route('admin.enrollment.index');
     }
 
     /**

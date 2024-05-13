@@ -437,7 +437,7 @@
             
             <td>
                   <a href="{{ route('admin.course.edit', ['course_code' => $row->course_code]) }}" class="btn btn-primary">Edit</a>
-                 <button class="btn btn-danger" onClick="deleteFunction('{{ $row->employee_id }}')">Delete</button> 
+                 <button class="btn btn-danger" onClick="deleteFunction('{{ $row->course_code }}')">Delete</button> 
 
                 
 

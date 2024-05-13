@@ -392,34 +392,23 @@
                     
           
                     <div class="forma" >
-                        <h1>Add Student</h1>
+                        <h1>Add Enrollment</h1>
 
-                        <form method="post" action="{{route('admin.student.store')}}">
+                        <form method="post" action="{{route('admin.enrollment.store')}}">
         @csrf
         <div class="mb-3">
-            <label for="student_id" class="form-label">Student ID</label>
-            <input type="text" class="form-control" id="student_id" name="student_id" aria-describedby="emailHelp">
+            <label for="enroll_id" class="form-label">Enrolment ID</label>
+            <input type="text" class="form-control" id="enroll_id" name="enroll_id" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" name="name">
+            <label for="student_id" class="form-label">Student Id</label>
+            <input type="text" class="form-control" id="student_id" name="student_id">
         </div>
         <div class="mb-3">
-            <label for="grade" class="form-label">Grade</label>
-            <input type="text" class="form-control" id="grade" name="grade">
+            <label for="course_code" class="form-label">Course Code</label>
+            <input type="text" class="form-control" id="course_code" name="course_code">
         </div>
-        <div class="mb-3">
-            <label for="sex" class="form-label">Sex</label>
-            <input type="text" class="form-control" id="sex" name="sex">
-        </div>
-        <div class="mb-3">
-            <label for="address" class="form-label">Address</label>
-            <input type="text" class="form-control" id="address" name="address">
-        </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email">
-        </div>
+        
         
         <button type="submit" class="btn btn-primary">Add</button>
     </form>
