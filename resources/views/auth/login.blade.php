@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout >
 
     <!-- Custom fonts for this template-->
 <link href="{{asset('assets/vendor1/fontawesome-free/css1/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -11,20 +11,20 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('assets/css1/sb-admin-2.min.css')}}" rel="stylesheet">
-
+        
                 <body class="bg-gradient-primary" >
                     <div class="a" style="background-color:gray;">
 
-                        <div class="container" >
+                        <div class="container" style="background-color:gray;" >
 
-                            <div class="card o-hidden border-0 shadow-lg my-5">
+                            <div class="card o-hidden border-0 shadow-lg my-5" >
                                 <div class="card-body p-0">
                                     <!-- Nested Row within Card Body -->
                                     <div class="row">
                                         <div class="col-lg-5 d-none d-lg-block" style="background-image:url('assets/images/library.png');" ></div>
-                                            <div class="col-lg-7">
-                                                <div class="p-5">
-                                                    <div class="text-center">
+                                            <div class="col-lg-7" >
+                                                <div class="p-5" >
+                                                    <div class="text-center"  >
                                                         <h1 class="h4 text-gray-900 mb-4">Login</h1>
                                                     </div>
 
