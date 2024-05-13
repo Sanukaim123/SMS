@@ -73,3 +73,4 @@ Route::get('/admin/course/index', [CourseController::class, 'index'])->name('adm
 Route::get('admin/course/create', [CourseController::class, 'create'])->name('admin.course.create');
 Route::post('admin/course/add', [CourseController::class, 'store'])->name('admin.course.store');
 Route::get('admin/course/edit/{course_code}', [CourseController::class, 'edit'])->name('admin.course.edit');
+Route::post('/update/{course_code}', [CourseController::class, 'update'])->name('admin.course.update');
