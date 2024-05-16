@@ -15,4 +15,11 @@ class Course extends Model
     protected $fillable = [
         'course_code', 'course_name','employee_id' // Specify the columns that are fillable
     ];
+
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class, 'employee_id', 'employee_id');
+    }
+
+    
 }

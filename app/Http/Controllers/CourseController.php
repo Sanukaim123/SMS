@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Course;
+use App\Models\Teacher;
 use Illuminate\Support\Facades\Session;
 
 class CourseController extends Controller
@@ -23,7 +24,8 @@ class CourseController extends Controller
     public function create()
     {
         $title='Add New Course';
-        return view('admin.course.create',compact('title'));
+        $teachers=Teacher::pluck('employee_id');
+        return view('admin.course.create',compact('teachers'));
     }
 
     /**
