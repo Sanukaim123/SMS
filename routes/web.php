@@ -14,10 +14,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin/table', function () {
-    return view('admin.table');
+Route::get('/admin/layouts', function () {
+    return view('admin.layouts.layouts');
 });
-
+Route::get('/admin/index1', function () {
+    return view('admin.student.index1');
+});
 
 Route::get('/admin/form', function () {
     return view('admin.form');

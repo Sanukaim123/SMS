@@ -14,4 +14,6 @@ class Enrollment extends Model
     protected $fillable = [
         'enroll_id', 'student_id','course_code' // Specify the columns that are fillable
     ];
+
+    
 }
