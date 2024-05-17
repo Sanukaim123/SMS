@@ -404,7 +404,7 @@
             <label for="name" class="form-label">Course Name</label>
             <input type="text" class="form-control" id="course_name" name="course_name">
         </div>
-        <label class="my-1 mr-2" for="status">Teacher ID</label>
+        <label class="my-1 mr-2" for="employee_id">Teacher ID</label>
                             <select class="custom-select my-1 mr-sm-2" id="employee_id" name="employee_id">
                                 @foreach($teachers as $employee_id => $name)
                                 <option value="{{$name}}">{{$name}}</option>

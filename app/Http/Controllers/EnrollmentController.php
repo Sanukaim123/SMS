@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Enrollment;
+use App\Models\Student;
+use App\Models\Course;
 use Illuminate\Support\Facades\Session;
 
 class EnrollmentController extends Controller
@@ -23,7 +25,9 @@ class EnrollmentController extends Controller
     public function create()
     {
         $title='Add New Enrollment';
-        return view('admin.enrollment.create',compact('title'));
+        $students=Student::pluck('student_id');
+        $courses=Course::pluck('course_code');
+        return view('admin.enrollment.create',compact('students','courses'));
     }
 
     /**

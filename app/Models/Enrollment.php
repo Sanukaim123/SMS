@@ -15,5 +15,14 @@ class Enrollment extends Model
         'enroll_id', 'student_id','course_code' // Specify the columns that are fillable
     ];
 
+    public function student()
+    {
+        return $this->belongsTo(Student::class, 'student_id', 'student_id');
+    }
+    public function course()
+    {
+        return $this->belongsTo(Course::class, 'course_code', 'course_code');
+    }
+
     
 }
