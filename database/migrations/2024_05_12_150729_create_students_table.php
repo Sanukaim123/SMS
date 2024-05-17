@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('student_id')->primary();
             $table->string('name');
             $table->string('grade');
-            $table->string('sex');
+            // $table->string('sex');
+            $table->enum('sex', ['Male', 'Female','Other']);
             $table->string('address');
             $table->string('email');
             $table->timestamps();

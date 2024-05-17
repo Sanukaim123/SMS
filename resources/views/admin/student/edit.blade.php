@@ -408,10 +408,14 @@
             <label for="grade" class="form-label">Grade</label>
             <input type="text" class="form-control" id="grade" name="grade" value="@if (isset($edit->student_id)) {{ $edit->grade }}@else {{ old('grade') }} @endif">
         </div>
-        <div class="mb-3">
-            <label for="sex" class="form-label">Sex</label>
-            <input type="text" class="form-control" id="sex" name="sex" value="@if (isset($edit->student_id)) {{ $edit->sex }}@else {{ old('sex') }} @endif">
-        </div>
+        <label class="my-1 mr-2" for="sex">Sex</label>
+                            <select class="custom-select my-1 mr-sm-2" id="sex" name="sex">
+                                
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                                <option value="2">Other</option>
+                            
+                            </select>
         <div class="mb-3">
             <label for="address" class="form-label">Address</label>
             <input type="text" class="form-control" id="address" name="address" value="@if (isset($edit->student_id)) {{ $edit->address }}@else {{ old('address') }} @endif">
