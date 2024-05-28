@@ -25,13 +25,18 @@ Route::get('/admin/form', function () {
     return view('admin.form');
 });
 
+Route::middleware(['auth','role:student'])->group(function(){
+    Route::post('/dashboard', [DashboardController::class, 'login'])->name('dashboard');
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    });
+});
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::post('/dashboard', [DashboardController::class, 'login'])->name('dashboard');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::get('/dashboard', function () {  return view('dashboard'); ->middleware(['auth', 'verified'])->name('dashboard');});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -55,18 +60,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::post('/update/{student_id}', [StudentController::class, 'update'])->name('admin.student.update');
 Route::post('admin/student/delete', [StudentController::class, 'destroy'])->name('admin.student.delete');
     // Route::post('admin/student/create', [AdminController::class, 'studentStore'])->name('admin.student.store');
-});
 
-
-
-Route::middleware(['auth','role:teacher'])->group(function(){
-    Route::get('/teacher/dashboard', [TeacherController::class, 'TeacherDashboard'])->name('teacher.dashboard');
-});
-
-
-
-
-Route::get('/admin/teacher/index', [TeacherController::class, 'index'])->name('admin.teacher.index');
+    Route::get('/admin/teacher/index', [TeacherController::class, 'index'])->name('admin.teacher.index');
 Route::get('admin/teacher/create', [TeacherController::class, 'create'])->name('admin.teacher.create');
 Route::post('admin/teacher/add', [TeacherController::class, 'store'])->name('admin.teacher.store');
 Route::get('admin/teacher/edit/{employee_id}', [TeacherController::class, 'edit'])->name('admin.teacher.edit');
@@ -84,3 +79,14 @@ Route::get('admin/enrollment/create', [EnrollmentController::class, 'create'])->
 Route::post('admin/enrollment/add', [EnrollmentController::class, 'store'])->name('admin.enrollment.store');
 Route::get('admin/enrollment/edit/{enroll_id}', [EnrollmentController::class, 'edit'])->name('admin.enrollment.edit');
 Route::post('/update/{enroll_id}', [EnrollmentController::class, 'update'])->name('admin.enrollment.update');
+});
+
+
+
+Route::middleware(['auth','role:teacher'])->group(function(){
+    Route::get('/teacher/dashboard', [TeacherController::class, 'TeacherDashboard'])->name('teacher.dashboard');
+});
+
+
+
+
