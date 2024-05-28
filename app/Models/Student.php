@@ -14,4 +14,19 @@ class Student extends Model
     protected $fillable = [
         'student_id', 'name','grade','sex','address', 'email' // Specify the columns that are fillable
     ];
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'username', 'student_id');
+    }
+
+    public function enrollments()
+    {
+        return $this->hasMany(Enrollment::class, 'student_id', 'student_id');
+    }
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class, 'enrollments', 'student_id', 'course_code', 'student_id', 'course_code');
+    }
 }

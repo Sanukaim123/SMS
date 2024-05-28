@@ -40,4 +40,9 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
         ];
     }
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class, 'username', 'student_id');
+    }
 }
