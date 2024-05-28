@@ -59,11 +59,12 @@ class EnrollmentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $enroll_id)
     {
-        //
+        $title = "Enrollment Details";
+        $enrollment = Enrollment::with(['student', 'course'])->findOrFail($enroll_id);
+        return view('admin.enrollment.view', compact('enrollment', 'title'));
     }
-
     /**
      * Show the form for editing the specified resource.
      */

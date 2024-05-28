@@ -79,6 +79,7 @@ Route::get('admin/enrollment/create', [EnrollmentController::class, 'create'])->
 Route::post('admin/enrollment/add', [EnrollmentController::class, 'store'])->name('admin.enrollment.store');
 Route::get('admin/enrollment/edit/{enroll_id}', [EnrollmentController::class, 'edit'])->name('admin.enrollment.edit');
 Route::post('/update/{enroll_id}', [EnrollmentController::class, 'update'])->name('admin.enrollment.update');
+Route::get('admin/enrollment/view/{enroll_id}', [EnrollmentController::class, 'show'])->name('admin.enrollment.show');
 });
 
 

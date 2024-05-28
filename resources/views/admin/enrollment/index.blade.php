@@ -438,7 +438,7 @@
             <td>
                  <a href="{{ route('admin.enrollment.edit', ['enroll_id' => $row->enroll_id]) }}" class="btn btn-primary">Edit</a>
                  <button class="btn btn-danger" onClick="deleteFunction('{{ $row->enroll_id }}')">Delete</button> 
-
+                 <a href="{{ route('admin.enrollment.show', ['enroll_id' => $row->enroll_id]) }}" class="btn btn-info">View</a>
                 
 
             </td>
