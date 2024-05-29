@@ -21,5 +21,20 @@ class Course extends Model
         return $this->belongsTo(Teacher::class, 'employee_id', 'employee_id');
     }
 
+    public function enrollments()
+    {
+        return $this->hasMany(Enrollment::class, 'course_code', 'course_code');
+    }
+
+    // public function users()
+    // {
+    //     return $this->belongsToMany(User::class, 'enrollments', 'course_code', 'username', 'course_code', 'student_id');
+    // }
+
+    public function students()
+    {
+        return $this->belongsToMany(Student::class, 'enrollments', 'course_code', 'student_id', 'course_code', 'student_id');
+    }
+
     
 }

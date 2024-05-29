@@ -41,8 +41,28 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
+    // public function student()
+    // {
+    //     return $this->belongsTo(Student::class, 'student_id', 'student_id');
+    // }
+
+    // public function courses()
+    // {
+    //     return $this->belongsToMany(Course::class, 'enrollments', 'student_id', 'course_code');
+    // }
+
+    
+    // Relationship to the Student model
     public function student()
     {
         return $this->belongsTo(Student::class, 'username', 'student_id');
     }
+
+    // Relationship to the Course model through the Enrollment pivot table
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class, 'enrollments', 'student_id', 'course_code', 'username', 'course_code');
+    }
+
+
 }

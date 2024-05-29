@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\Course;
+use App\Models\Enrollment;
 use Illuminate\Support\Facades\Session;
+use Auth;
 
 class StudentController extends Controller
 {
@@ -115,5 +118,13 @@ class StudentController extends Controller
 
         Session::flash('success', 'User deleted successfully');
         return redirect()->route('admin.student.index');
+    }
+
+    public function dashboard()
+    {
+        $user = Auth::user(); // Assuming you are using Auth for student authentication
+        $courses = $user->courses; // Fetch enrolled courses
+
+        return view('dashboard', compact('courses'));
     }
 }

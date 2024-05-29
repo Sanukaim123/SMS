@@ -27,9 +27,11 @@ Route::get('/admin/form', function () {
 
 Route::middleware(['auth','role:student'])->group(function(){
     Route::post('/dashboard', [DashboardController::class, 'login'])->name('dashboard');
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    });
+    Route::get('/dashboard', [StudentController::class, 'dashboard']);
+    //  Route::get('/dashboard', function () {
+    //     return view('dashboard');
+    //  });
+    
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
