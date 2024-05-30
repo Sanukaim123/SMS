@@ -15,4 +15,9 @@ class Teacher extends Model
     protected $fillable = [
         'employee_id', 'name','ualification','year_experience','status', 'email' // Specify the columns that are fillable
     ];
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class, 'employee_id', 'employee_id');
+    }
 }

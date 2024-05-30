@@ -10,6 +10,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnrollmentController;
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -87,7 +88,7 @@ Route::get('admin/enrollment/view/{enroll_id}', [EnrollmentController::class, 's
 
 
 Route::middleware(['auth','role:teacher'])->group(function(){
-    Route::get('/teacher/dashboard', [TeacherController::class, 'TeacherDashboard'])->name('teacher.dashboard');
+    Route::get('/teacher/dashboard', [TeacherController::class, 'dashboard'])->name('teacher.dashboard');
 });
 
 

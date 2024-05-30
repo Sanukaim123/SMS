@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Teacher;
 use Illuminate\Support\Facades\Session;
+use Auth;
 
 class TeacherController extends Controller
 {
@@ -114,7 +115,11 @@ class TeacherController extends Controller
         //
     }
 
-    public function TeacherDashboard(){
-            return view('teacher.teacher_dashboard');
+    public function dashboard()
+    {
+        $user = Auth::user(); // Get the authenticated user
+        $courses = $user->courses1; // Fetch courses associated with the teacher
+
+        return view('teacher.teacher_dashboard', compact('courses'));
     }
 }

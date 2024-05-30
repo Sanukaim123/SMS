@@ -41,15 +41,6 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
-    // public function student()
-    // {
-    //     return $this->belongsTo(Student::class, 'student_id', 'student_id');
-    // }
-
-    // public function courses()
-    // {
-    //     return $this->belongsToMany(Course::class, 'enrollments', 'student_id', 'course_code');
-    // }
 
     
     // Relationship to the Student model
@@ -62,6 +53,18 @@ class User extends Authenticatable implements MustVerifyEmail
     public function courses()
     {
         return $this->belongsToMany(Course::class, 'enrollments', 'student_id', 'course_code', 'username', 'course_code');
+    }
+
+    // Relationship to the Teacher model
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class, 'username', 'employee_id');
+    }
+
+    // Relationship to the Course model through the Teacher model
+    public function courses1()
+    {
+        return $this->hasManyThrough(Course::class, Teacher::class, 'employee_id', 'employee_id', 'username', 'employee_id');
     }
 
 
