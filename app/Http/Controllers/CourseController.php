@@ -58,10 +58,10 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    // public function show(string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -104,5 +104,17 @@ class CourseController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function show($course_code)
+    {
+        $course = Course::where('course_code', $course_code)->firstOrFail();
+        return view('course.details', compact('course'));
+    }
+
+    public function java()
+    {
+        
+        return view('course.java');
     }
 }

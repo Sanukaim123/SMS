@@ -11,6 +11,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnrollmentController;
 
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -89,6 +90,9 @@ Route::get('admin/enrollment/view/{enroll_id}', [EnrollmentController::class, 's
 
 Route::middleware(['auth','role:teacher'])->group(function(){
     Route::get('/teacher/dashboard', [TeacherController::class, 'dashboard'])->name('teacher.dashboard');
+    Route::get('/course/{course_code}', [CourseController::class, 'show'])->name('course.details');
+    Route::get('/course/java', [CourseController::class, 'java'])->name('course.java');
+    
 });
 
 
