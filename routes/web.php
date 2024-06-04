@@ -23,9 +23,7 @@ Route::get('/admin/index1', function () {
     return view('admin.student.index1');
 });
 
-Route::get('/admin/form', function () {
-    return view('admin.form');
-});
+
 
 Route::middleware(['auth','role:student'])->group(function(){
     Route::post('/dashboard', [DashboardController::class, 'login'])->name('dashboard');
