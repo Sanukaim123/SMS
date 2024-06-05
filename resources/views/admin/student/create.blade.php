@@ -3,9 +3,9 @@
 
 @section('content')
 <div class="forma" >
-                        <h1>Add Student</h1>
+    <h1>Add Student</h1>
 
-                        <form method="post" action="{{route('admin.student.store')}}">
+    <form method="post" action="{{route('admin.student.store')}}">
         @csrf
         <div class="mb-3">
             <label for="student_id" class="form-label">Student ID</label>
