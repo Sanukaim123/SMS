@@ -30,25 +30,25 @@
         @else
             <p>You are not assigned to any courses.</p>
         @endif
-    </div>
+</div>
 
 
 <style>
-.card:hover {
-    cursor: pointer;
-    background-color: #f8f9fa; /* Change background color on hover */
-}
+    .card:hover {
+        cursor: pointer;
+        background-color: #f8f9fa; /* Change background color on hover */
+    }
 </style>
 
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.card').forEach(function (card) {
-        card.addEventListener('click', function () {
-            window.location.href = '/courses/' + this.dataset.courseCode; // Adjust the URL as needed
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.card').forEach(function (card) {
+            card.addEventListener('click', function () {
+                window.location.href = '/courses/' + this.dataset.courseCode; // Adjust the URL as needed
+            });
         });
     });
-});
 </script>
 
 @endsection
