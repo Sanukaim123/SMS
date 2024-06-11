@@ -6,7 +6,7 @@
     
     <div class="row">
         <div class="col-xl-6 col-md-12 mb-4">
-            <a href="{{ route('course.assignments', $course->course_code) }}" class="card-link">
+            <a href="{{ route('teacher.assignments.create', $course->course_code) }}" class="card-link">
                 <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -24,7 +24,7 @@
         </div>
 
         <div class="col-xl-6 col-md-12 mb-4">
-            <a href="{{ route('course.lecture_notes', $course->course_code) }}" class="card-link">
+            <a href="" class="card-link">
                 <div class="card border-left-success shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">

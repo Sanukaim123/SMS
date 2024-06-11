@@ -111,17 +111,5 @@ class CourseController extends Controller
         $course = Course::where('course_code', $course_code)->firstOrFail();
         return view('course.details', compact('course'));
     }
-    public function assignments($course_code)
-    {
-        $course = Course::where('course_code', $course_code)->firstOrFail();
-        // You can fetch the assignments related to this course
-        return view('course.assignments', compact('course'));
-    }
-
-    public function lectureNotes($course_code)
-    {
-        $course = Course::where('course_code', $course_code)->firstOrFail();
-        // You can fetch the lecture notes related to this course
-        return view('course.lecture_notes', compact('course'));
-    }
+    
 }

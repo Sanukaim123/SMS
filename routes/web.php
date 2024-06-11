@@ -9,7 +9,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnrollmentController;
-
+use App\Http\Controllers\TeacherAssignmentController;
 
 
 Route::get('/', function () {
@@ -90,8 +90,12 @@ Route::middleware(['auth','role:teacher'])->group(function(){
     Route::get('/teacher/dashboard', [TeacherController::class, 'dashboard'])->name('teacher.dashboard');
     Route::get('/course/{course_code}', [CourseController::class, 'show'])->name('course.details');
  
-    Route::get('/course/{course_code}/assignments', [CourseController::class, 'assignments'])->name('course.assignments');
-    Route::get('/course/{course_code}/lecture_notes', [CourseController::class, 'lectureNotes'])->name('course.lecture_notes');
+    //
+
+    Route::get('assignments', [TeacherAssignmentController::class, 'index'])->name('teacher.assignments.index');
+    Route::get('assignments/create/{course_code}', [TeacherAssignmentController::class, 'create'])->name('teacher.assignments.create');
+    Route::post('assignments', [TeacherAssignmentController::class, 'store'])->name('teacher.assignments.store');
+    Route::delete('assignments/{assignment}', [TeacherAssignmentController::class, 'destroy'])->name('teacher.assignments.destroy');
 });
 
 
