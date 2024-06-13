@@ -10,6 +10,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\TeacherAssignmentController;
+use App\Http\Controllers\StudentAssignmentController;
 
 
 Route::get('/', function () {
@@ -31,7 +32,9 @@ Route::middleware(['auth','role:student'])->group(function(){
     //  Route::get('/dashboard', function () {
     //     return view('dashboard');
     //  });
+
     
+    Route::get('/student/assignments', [StudentAssignmentController::class, 'index'])->name('student.assignments');
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
