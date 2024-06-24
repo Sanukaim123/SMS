@@ -11,7 +11,7 @@
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $assignment->course_code}} -{ $assignment->course->course_name } </h5>
+                            <h5 class="card-title">{{ $assignment->course_code}} - {{ $assignment->course->course_name }} </h5>
                             <p class="card-title">{{ $assignment->title }}</p>
                   
 
