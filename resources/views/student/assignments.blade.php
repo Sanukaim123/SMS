@@ -18,6 +18,9 @@
                             <p class="card-text"><small class="text-muted">Due Date: {{ $assignment->due_date }}</small></p>
 
                             <a href="{{ asset('storage/' . $assignment->file_path) }}" class="btn btn-primary" download>Download Assignment</a>
+                            <br><br>
+                            <a href="{{ route('student.submissions.create', $assignment->id) }}" class="btn btn-secondary">Submit Assignment</a>
+                           
                         </div>
                     </div>
                 </div>

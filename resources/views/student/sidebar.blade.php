@@ -39,7 +39,7 @@
     <li class="nav-item">
         <a class="nav-link" href="{{route('student.assignments')}}">
         <i class="fas fa-fw fa-clipboard"></i>
-            <span>ABC</span></a>
+            <span>Assignment</span></a>
     </li>
 
     <!-- Nav Item - Tables -->

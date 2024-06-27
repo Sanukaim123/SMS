@@ -11,6 +11,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\TeacherAssignmentController;
 use App\Http\Controllers\StudentAssignmentController;
+use App\Http\Controllers\StudentSubmissionController;
 
 
 Route::get('/', function () {
@@ -35,6 +36,10 @@ Route::middleware(['auth','role:student'])->group(function(){
 
     
     Route::get('/student/assignments', [StudentAssignmentController::class, 'index'])->name('student.assignments');
+
+    Route::get('student/assignments/{assignment}/submissions/create', [StudentSubmissionController::class, 'create'])->name('student.submissions.create');
+    Route::post('student/assignments/{assignment}/submissions', [StudentSubmissionController::class, 'store'])->name('student.submissions.store');
+    Route::delete('student/submissions/{submission}', [StudentSubmissionController::class, 'destroy'])->name('student.submissions.destroy');
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
