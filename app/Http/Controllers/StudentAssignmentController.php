@@ -1,26 +1,22 @@
 <?php
+// app/Http/Controllers/StudentAssignmentController.php
 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Assignment;
 
 class StudentAssignmentController extends Controller
 {
     public function index()
     {
-        // Get the logged-in user
-        $user = Auth::user();
-
-        // Get the student's courses
-        $student = $user->student;
-        $courses = $student->courses;
-
-        // Fetch assignments for these courses
-        $assignments = collect();
-        foreach ($courses as $course) {
-            $assignments = $assignments->merge($course->assignments);
-        }
+        $student = Auth::user()->student;
+        $assignments = Assignment::whereHas('course', function ($query) use ($student) {
+            $query->whereHas('students', function ($query) use ($student) {
+                $query->where('students.student_id', $student->student_id);
+            });
+        })->with(['course', 'submissions'])->get();
 
         return view('student.assignments', compact('assignments'));
     }

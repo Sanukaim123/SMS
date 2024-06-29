@@ -26,6 +26,15 @@ class StudentSubmissionController extends Controller
         $assignment = Assignment::findOrFail($assignmentId);
         $student = Auth::user()->student;
 
+        // Check if the student already submitted for this assignment
+        $existingSubmission = Submission::where('assignment_id', $assignmentId)
+                                        ->where('student_id', $student->student_id)
+                                        ->first();
+        
+        if ($existingSubmission) {
+            return redirect()->route('student.assignments')->with('error', 'You have already submitted this assignment.');
+        }
+
         $filePath = $request->file('file')->store('submissions', 'public');
 
         Submission::create([
@@ -45,4 +54,3 @@ class StudentSubmissionController extends Controller
         return redirect()->route('student.assignments')->with('success', 'Submission removed successfully.');
     }
 }
-
