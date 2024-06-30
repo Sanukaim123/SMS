@@ -12,6 +12,7 @@ use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\TeacherAssignmentController;
 use App\Http\Controllers\StudentAssignmentController;
 use App\Http\Controllers\StudentSubmissionController;
+use App\Http\Controllers\TeacherNoteController;
 
 
 Route::get('/', function () {
@@ -103,6 +104,11 @@ Route::middleware(['auth','role:teacher'])->group(function(){
     Route::get('assignments/create/{course_code}', [TeacherAssignmentController::class, 'create'])->name('teacher.assignments.create');
     Route::post('assignments', [TeacherAssignmentController::class, 'store'])->name('teacher.assignments.store');
     Route::delete('assignments/{assignment}', [TeacherAssignmentController::class, 'destroy'])->name('teacher.assignments.destroy');
+
+    Route::get('notes', [TeacherNoteController::class, 'index'])->name('teacher.lec_notes.index');
+    Route::get('lec_notes/create/{course_code}', [TeacherNoteController::class, 'create'])->name('teacher.lec_notes.create');
+    Route::post('notes', [TeacherNoteController::class, 'store'])->name('teacher.lec_notes.store');
+    Route::delete('notes/{note}', [TeacherNoteController::class, 'destroy'])->name('teacher.lec_notes.destroy');
 });
 
 

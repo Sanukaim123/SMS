@@ -38,5 +38,11 @@ class Course extends Model
         return $this->hasMany(Assignment::class, 'course_code', 'course_code');
     }
 
+    public function notes()
+    {
+        return $this->hasMany(Note::class, 'course_code', 'course_code');
+    }
+
+
     
 }
