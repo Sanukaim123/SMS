@@ -44,9 +44,9 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="{{route('admin.teacher.index')}}">
+        <a class="nav-link" href="{{route('teacher.lec_notes.index')}}">
             <i class="fas fa-fw fa-chalkboard-teacher"></i>
-            <span>Teachers</span></a>
+            <span>Lecture Notes</span></a>
     </li>
 
     <!-- Nav Item - Charts -->
