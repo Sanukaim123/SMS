@@ -37,7 +37,7 @@
     
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="{{route('student.assignments')}}">
+  
         <i class="fas fa-fw fa-clipboard"></i>
             <span>Assignment</span></a>
     </li>
