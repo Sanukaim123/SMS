@@ -1,7 +1,5 @@
 <?php
 
-// app/Http/Controllers/StudentSubmissionController.php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -11,13 +9,13 @@ use App\Models\Submission;
 
 class StudentSubmissionController extends Controller
 {
-    public function create($assignmentId)
+    public function create($course_code, $assignmentId)
     {
         $assignment = Assignment::findOrFail($assignmentId);
-        return view('student.submissions.create', compact('assignment'));
+        return view('student.submissions.create', compact('assignment', 'course_code'));
     }
 
-    public function store(Request $request, $assignmentId)
+    public function store(Request $request, $course_code, $assignmentId)
     {
         $request->validate([
             'file' => 'required|mimes:pdf,doc,docx|max:2048',
@@ -32,7 +30,7 @@ class StudentSubmissionController extends Controller
                                         ->first();
         
         if ($existingSubmission) {
-            return redirect()->route('student.assignments')->with('error', 'You have already submitted this assignment.');
+            return redirect()->route('student.assignments', $course_code)->with('error', 'You have already submitted this assignment.');
         }
 
         $filePath = $request->file('file')->store('submissions', 'public');
@@ -43,14 +41,14 @@ class StudentSubmissionController extends Controller
             'file_path' => $filePath,
         ]);
 
-        return redirect()->route('student.assignments')->with('success', 'Assignment submitted successfully.');
+        return redirect()->route('student.assignments', $course_code)->with('success', 'Assignment submitted successfully.');
     }
 
-    public function destroy($id)
+    public function destroy($course_code, $id)
     {
         $submission = Submission::findOrFail($id);
         $submission->delete();
 
-        return redirect()->route('student.assignments')->with('success', 'Submission removed successfully.');
+        return redirect()->route('student.assignments', $course_code)->with('success', 'Submission removed successfully.');
     }
 }

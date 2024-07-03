@@ -4,16 +4,15 @@
 
 @section('content')
 <div class="container">
-    <h1>Submit Assignment for {{ $assignment->course->course_name }}</h1>
-    <br><br>
-    <form action="{{ route('student.submissions.store', $assignment->id) }}" method="POST" enctype="multipart/form-data">
+    <h1>Submit Assignment: {{ $assignment->title }}</h1>
+
+    <form action="{{ route('student.submissions.store', ['course_code' => $course_code, 'assignment' => $assignment->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <div>
-            <label for="file">Upload File:</label>
-            <input type="file" name="file" id="file" required>
+        <div class="form-group">
+            <label for="file">Assignment File</label>
+            <input type="file" class="form-control" id="file" name="file" required>
         </div>
-        <br><br> 
-        <button type="submit">Submit Assignment</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
 @endsection

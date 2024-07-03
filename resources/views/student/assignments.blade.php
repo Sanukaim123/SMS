@@ -11,7 +11,7 @@
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $assignment->course_code }} - {{ $assignment->course->course_name }}</h5>
+                            <h5 class="card-title">{{ $assignment->course->course_code }} - {{ $assignment->course->course_name }}</h5>
                             <p class="card-title">{{ $assignment->title }}</p>
                             <p class="card-text"><small class="text-muted">Due Date: {{ $assignment->due_date }}</small></p>
                             <a href="{{ asset('storage/' . $assignment->file_path) }}" class="btn btn-primary" download>Download Assignment</a>
@@ -23,13 +23,13 @@
 
                             @if ($studentSubmission)
                                 <p class="card-text"><strong>Submitted File: </strong> <a href="{{ asset('storage/' . $studentSubmission->file_path) }}" class="btn btn-info" download>{{ $assignment->title }}</a></p>
-                                <form action="{{ route('student.submissions.destroy', $studentSubmission->id) }}" method="POST" style="display:inline;">
+                                <form action="{{ route('student.submissions.destroy', ['course_code' => $assignment->course->course_code, 'submission' => $studentSubmission->id]) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Remove Submission</button>
                                 </form>
                             @else
-                                <a href="{{ route('student.submissions.create', $assignment->id) }}" class="btn btn-secondary">Submit Assignment</a>
+                                <a href="{{ route('student.submissions.create', ['course_code' => $assignment->course->course_code, 'assignment' => $assignment->id]) }}" class="btn btn-secondary">Submit Assignment</a>
                             @endif
                         </div>
                     </div>

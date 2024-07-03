@@ -12,7 +12,7 @@ class StudentAssignmentController extends Controller
     public function index($course_code)
     {
         $student = Auth::user()->student;
-        $assignments = Assignment::whereHas('course', function ($query) use ($student, $course_code) {
+        $assignments = Assignment::whereHas('course', function ($query) use ($course_code, $student) {
             $query->where('course_code', $course_code)
                   ->whereHas('students', function ($query) use ($student) {
                       $query->where('students.student_id', $student->student_id);

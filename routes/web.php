@@ -39,9 +39,10 @@ Route::middleware(['auth','role:student'])->group(function(){
 
     
     Route::get('student/assignments/{course_code}', [StudentAssignmentController::class, 'index'])->name('student.assignments');
-    Route::get('student/assignments/{assignment}/submissions/create', [StudentSubmissionController::class, 'create'])->name('student.submissions.create');
-    Route::post('student/assignments/{assignment}/submissions', [StudentSubmissionController::class, 'store'])->name('student.submissions.store');
-    Route::delete('student/submissions/{submission}', [StudentSubmissionController::class, 'destroy'])->name('student.submissions.destroy');
+    
+    Route::get('student/assignments/{course_code}/{assignment}/submissions/create', [StudentSubmissionController::class, 'create'])->name('student.submissions.create');
+Route::post('student/assignments/{course_code}/{assignment}/submissions', [StudentSubmissionController::class, 'store'])->name('student.submissions.store');
+Route::delete('student/submissions/{course_code}/{submission}', [StudentSubmissionController::class, 'destroy'])->name('student.submissions.destroy');
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
