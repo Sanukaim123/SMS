@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Course;
+use App\Models\Note;
 use App\Models\Enrollment;
 use Illuminate\Support\Facades\Session;
 use Auth;
@@ -127,5 +128,12 @@ class StudentController extends Controller
         $courses = $user->courses; // Fetch enrolled courses
 
         return view('dashboard', compact('courses'));
+    }
+
+    public function lecNotes($course_code)
+    {
+        $course = Course::where('course_code', $course_code)->firstOrFail();
+        $notes = Note::where('course_code', $course_code)->get();
+        return view('student.lec_notes', compact('notes', 'course'));
     }
 }

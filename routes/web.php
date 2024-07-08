@@ -31,6 +31,7 @@ Route::get('/admin/index1', function () {
 Route::middleware(['auth','role:student'])->group(function(){
     Route::post('/dashboard', [DashboardController::class, 'login'])->name('dashboard');
     Route::get('/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
+    
     //  Route::get('/dashboard', function () {
     //     return view('dashboard');
     //  });
@@ -41,8 +42,9 @@ Route::middleware(['auth','role:student'])->group(function(){
     Route::get('student/assignments/{course_code}', [StudentAssignmentController::class, 'index'])->name('student.assignments');
     
     Route::get('student/assignments/{course_code}/{assignment}/submissions/create', [StudentSubmissionController::class, 'create'])->name('student.submissions.create');
-Route::post('student/assignments/{course_code}/{assignment}/submissions', [StudentSubmissionController::class, 'store'])->name('student.submissions.store');
-Route::delete('student/submissions/{course_code}/{submission}', [StudentSubmissionController::class, 'destroy'])->name('student.submissions.destroy');
+    Route::post('student/assignments/{course_code}/{assignment}/submissions', [StudentSubmissionController::class, 'store'])->name('student.submissions.store');
+    Route::delete('student/submissions/{course_code}/{submission}', [StudentSubmissionController::class, 'destroy'])->name('student.submissions.destroy');
+    Route::get('student/lec_notes/{course_code}', [StudentController::class, 'lecNotes'])->name('student.lec_notes');
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
